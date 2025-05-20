@@ -1,13 +1,12 @@
 import charactersData from '../mocks/mocksCharacters.json'
+import CharactersItem from '../components/CharactersItem';
 const Characters = () => {
     return (
         <div>
             <h1>Characters</h1>
-            <ul>
-                {charactersData.results.map(({id, name}) => (
-                    <li key={id}>
-                        <h3>{name}</h3>
-                    </li>
+            <ul className='characters-list'>
+                {charactersData.results.map((character) => (
+                    <CharactersItem {...character} />
                 ))}
             </ul>
         </div>
