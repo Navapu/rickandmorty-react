@@ -10,15 +10,17 @@ function App() {
 
   let selectedpage;
 
-  switch(page){
-    case "characters": selectedpage=<Characters />; break
+  switch (page) {
+    case "characters": selectedpage = <Characters />; break
     case "locations": selectedpage = <Locations />; break
     case "episodes": selectedpage = <Episodes />; break
   }
   return (
     <>
-      {selectedpage}
       <NavSearchParams />
+      <main>
+        {selectedpage}
+      </main>
     </>
   )
 }
