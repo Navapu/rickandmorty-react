@@ -50,3 +50,7 @@ ul{
 button{
   margin: 10px;
 }
+.pressed{
+  background-color: #8ce48f;
+  color: black;
+}
