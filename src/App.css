@@ -31,7 +31,6 @@ ul{
   flex-wrap: wrap;
   gap: 1rem;
   box-sizing: border-box;
-
 }
 .characters-item{
   display: flex;
@@ -43,7 +42,11 @@ ul{
 }
 .characters-item img{
   height: 200px;
+  border-radius: 10px;
 }
 .characters-item div{
+  margin: 10px;
+}
+button{
   margin: 10px;
 }
