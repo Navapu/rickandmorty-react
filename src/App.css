@@ -33,18 +33,19 @@ ul{
   box-sizing: border-box;
 }
 .characters-item{
+  color: white;
   display: flex;
-  border: 1px solid black;
   border-radius: 10px;
   flex: 1 1 calc(33.333% - 1rem);
   text-align: start;
   box-sizing: border-box;
+  background-color: #636262;
 }
 .characters-item img{
   height: 200px;
-  border-radius: 10px;
+  border-radius: 10px 0px 0px 10px;
 }
-.characters-item div{
+.character-information{
   margin: 10px;
 }
 button{
@@ -53,4 +54,21 @@ button{
 .pressed{
   background-color: #8ce48f;
   color: black;
+}
+.status{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.status span{
+  height: 1.2rem;
+}
+.Alive{
+  color: #55cc44
+}
+.Dead{
+  color: #d63d2e;
+}
+.unknown{
+  color: #e0833b
 }
