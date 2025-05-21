@@ -13,7 +13,8 @@ const Characters = () => {
     const [info, setInfo] = useState([])
     const [filters, setFilters] = useState({
         species: "",
-        status: ""
+        status: "",
+        name: ""
     })
 
     useEffect(() => {
@@ -25,7 +26,7 @@ const Characters = () => {
             setIsLoading(true)
             // Cleaning up a possible previous error
             setError(null)
-            const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&species=${species}&status=${status}`)
+            const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&species=${species}&status=${status}&name=${name}`)
 
             //Verify the answer
             if (!response.ok) {
@@ -60,7 +61,7 @@ const Characters = () => {
         // Reset to page 1 to avoid errors from invalid pages after species change
         setPage(1)
     }
-    const { species, status } = filters;
+    const { species, status, name } = filters;
     return (
         <div>
             <h1>Characters</h1>
@@ -74,8 +75,8 @@ const Characters = () => {
                 <button onClick={() => handleStatus("Dead")} className={status === 'Dead' ? 'pressed': null}><FaSkull /></button>
                 <button onClick={() => handleStatus("unknown")} className={status === 'unknown' ? 'pressed': null}><FaQuestion /></button>
                 <button onClick={() => handleStatus("")} className={status === '' ? 'pressed': null}>All</button>
-
             </div>
+            <input type="text" value={name} onChange={(e) => setFilters({...filters, name: e.target.value})}/>
             <br />
             <h2>Characters: {info.count} , Pages: {info.pages}</h2>
             <button onClick={prevPage} disabled={page === 1}>Previous</button>
