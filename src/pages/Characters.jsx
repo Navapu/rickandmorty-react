@@ -26,7 +26,15 @@ const Characters = () => {
             setIsLoading(true)
             // Cleaning up a possible previous error
             setError(null)
-            const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&species=${species}&status=${status}&name=${name}`)
+
+            const params = new URLSearchParams();
+            params.append("page", page)
+            Object.entries(filters).forEach(([key, value]) => {
+                if(value !== ""){
+                    params.append(key, value)
+                }
+            })
+            const response = await fetch(`https://rickandmortyapi.com/api/character/?${params.toString()}`)
 
             //Verify the answer
             if (!response.ok) {
