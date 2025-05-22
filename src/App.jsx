@@ -1,25 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import { NavSearchParams } from './components/NavSearchParams'
+import {Routes, Route } from "react-router";
 import Characters from './pages/Characters'
 import Episodes from './pages/Episodes'
 import Locations from './pages/Locations'
+import './App.css'
+import { Navigation } from './components/Navigation'
 function App() {
-  const params = new URLSearchParams(window.location.search);
-  const page = params.get("page") || "characters"
-
-  let selectedpage;
-
-  switch (page) {
-    case "characters": selectedpage = <Characters />; break
-    case "locations": selectedpage = <Locations />; break
-    case "episodes": selectedpage = <Episodes />; break
-  }
   return (
     <>
-      <NavSearchParams />
+      <Navigation />
       <main>
-        {selectedpage}
+        <Routes>
+          <Route index element={<Characters />} />
+          <Route path='/locations' element={<Locations />} />
+          <Route path='/episodes' element={<Episodes />} />
+        </Routes>
       </main>
     </>
   )

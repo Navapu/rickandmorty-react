@@ -38,6 +38,7 @@ const Characters = () => {
 
             //Verify the answer
             if (!response.ok) {
+                setCharacters([])
                 throw new Error(`Error: ${response.status} - ${response.statusText}`)
             }
             const data = await response.json()
@@ -45,7 +46,7 @@ const Characters = () => {
             setInfo(data.info)
         } catch (err) {
             setError(err.message)
-            console.log("Error: ", { e })
+            console.log("Error: ", { err })
         } finally {
             setIsLoading(false)
         }
