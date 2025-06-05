@@ -3,19 +3,25 @@ import CharactersItem from '../components/CharactersItem';
 import { RiAliensFill } from "react-icons/ri";
 import { IoPerson } from "react-icons/io5";
 import { FaSkull, FaHeart, FaQuestion } from "react-icons/fa";
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 const Characters = () => {
+    const param2 = new URLSearchParams (window.location.search)
+
     const [characters, setCharacters] = useState([])
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(Number(param2.get('page')) || 1)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState([{pages: 0}])
+
+
     const [filters, setFilters] = useState({
-        species: "",
-        status: "",
-        name: ""
+        species: param2.get('species') || '',
+        status: param2.get('status') || '',
+        name: param2.get('name') || ''
     })
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         fetchCharacters()
@@ -30,12 +36,13 @@ const Characters = () => {
             const params = new URLSearchParams();
             params.append("page", page)
             Object.entries(filters).forEach(([key, value]) => {
-                if(value !== ""){
+                if (value !== "") {
                     params.append(key, value)
                 }
             })
             const response = await fetch(`https://rickandmortyapi.com/api/character/?${params.toString()}`)
 
+            setSearchParams(params)
             //Verify the answer
             if (!response.ok) {
                 setCharacters([])
@@ -57,7 +64,7 @@ const Characters = () => {
         setPage(prev => prev - 1)
     }
     const nextPage = () => {
-        if (page + 1 > info.pages) { return; }
+        if (page >= info.pages) { return; }
         setPage(prev => prev + 1)
     }
     const handleSpecies = (specie) => {
@@ -75,22 +82,22 @@ const Characters = () => {
         <div>
             <h1>Characters</h1>
             <div className='species-filter'>
-                <button onClick={() => handleSpecies("alien")} className={species === 'alien' ? 'pressed': null}><RiAliensFill /></button>
-                <button onClick={() => handleSpecies("human")} className={species === 'human' ? 'pressed': null}><IoPerson /></button>
-                <button onClick={() => handleSpecies("")} className={species === '' ? 'pressed': null}>All</button>
+                <button onClick={() => handleSpecies("alien")} className={species === 'alien' ? 'pressed' : null}><RiAliensFill /></button>
+                <button onClick={() => handleSpecies("human")} className={species === 'human' ? 'pressed' : null}><IoPerson /></button>
+                <button onClick={() => handleSpecies("")} className={species == '' ? 'pressed' : null}>All</button>
             </div>
             <div className='status-filter'>
-                <button onClick={() => handleStatus("Alive")} className={status === 'Alive' ? 'pressed': null}><FaHeart /></button>
-                <button onClick={() => handleStatus("Dead")} className={status === 'Dead' ? 'pressed': null}><FaSkull /></button>
-                <button onClick={() => handleStatus("unknown")} className={status === 'unknown' ? 'pressed': null}><FaQuestion /></button>
-                <button onClick={() => handleStatus("")} className={status === '' ? 'pressed': null}>All</button>
+                <button onClick={() => handleStatus("Alive")} className={status === 'Alive' ? 'pressed' : null}><FaHeart /></button>
+                <button onClick={() => handleStatus("Dead")} className={status === 'Dead' ? 'pressed' : null}><FaSkull /></button>
+                <button onClick={() => handleStatus("unknown")} className={status === 'unknown' ? 'pressed' : null}><FaQuestion /></button>
+                <button onClick={() => handleStatus("")} className={status === '' ? 'pressed' : null}>All</button>
             </div>
-            <input type="text" value={name} onChange={(e) => setFilters({...filters, name: e.target.value})}/>
+            <input type="text" value={name} onChange={(e) => setFilters({ ...filters, name: e.target.value })} />
             <br />
             <h2>Characters: {info.count} , Pages: {info.pages}</h2>
             <button onClick={prevPage} disabled={page === 1}>Previous</button>
             <span>{page}</span>
-            <button onClick={nextPage} disabled={page + 1 > info.pages}>Next</button>
+            <button onClick={nextPage} disabled={page >= info.pages}>Next</button>
             {isLoading && (<div>Loading data...</div>)}
             {error && <p>Error loading characters: {error}</p>}
             <ul className='characters-list'>

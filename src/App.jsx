@@ -10,7 +10,7 @@ function App() {
       <Navigation />
       <main>
         <Routes>
-          <Route index element={<Characters />} />
+          <Route path="/characters" element={<Characters />} />
           <Route path='/locations' element={<Locations />} />
           <Route path='/episodes' element={<Episodes />} />
         </Routes>
