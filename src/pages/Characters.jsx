@@ -95,9 +95,9 @@ const Characters = () => {
             <input type="text" value={name} onChange={(e) => setFilters({ ...filters, name: e.target.value })} />
             <br />
             <h2>Characters: {info.count} , Pages: {info.pages}</h2>
-            <button onClick={prevPage} disabled={page === 1}>Previous</button>
-            <span>{page}</span>
-            <button onClick={nextPage} disabled={page >= info.pages}>Next</button>
+            <button onClick={prevPage} disabled={page === 1} className='navigation-button'>Previous</button>
+            <span className='page'>{page}</span>
+            <button onClick={nextPage} disabled={page >= info.pages} className='navigation-button'>Next</button>
             {isLoading && (<div>Loading data...</div>)}
             {error && <p>Error loading characters: {error}</p>}
             <ul className='characters-list'>
