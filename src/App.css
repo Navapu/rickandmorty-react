@@ -39,7 +39,11 @@ ul{
   flex: 1 1 calc(33.333% - 1rem);
   text-align: start;
   box-sizing: border-box;
-  background-color: #636262;
+  background-color: #3a3a3a;
+}
+.characters-item h3{
+  color: #8ce48f;
+  font-weight: bold;
 }
 .characters-item img{
   height: 200px;
@@ -141,11 +145,6 @@ input:focus {
   transition: all 0.3s ease;
 }
 
-.navigation-button:hover:not(:disabled) {
-  background-color: #44aa33;
-  transform: translateY(-2px);
-}
-
 .navigation-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -164,7 +163,7 @@ input:focus {
 }
 
 .episodes-item {
-  background: linear-gradient(145deg, #3a3a3a, #2c2c2c);
+  background-color: #3a3a3a;
   padding: 20px;
   border-radius: 12px;
   color: #fff;
