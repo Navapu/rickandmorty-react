@@ -2,6 +2,7 @@ import {Routes, Route } from "react-router";
 import Characters from './pages/Characters'
 import Episodes from './pages/Episodes'
 import Locations from './pages/Locations'
+import Home from "./pages/Home";
 import './App.css'
 import { Navigation } from './components/Navigation'
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div>
       <Navigation />
       <main>
+        <Home/>
         <Routes>
           <Route path="/characters" element={<Characters />} />
           <Route path='/locations' element={<Locations />} />
