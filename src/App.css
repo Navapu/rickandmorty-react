@@ -1,38 +1,61 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
 header {
   margin: 20px;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin-top: 0;
+  padding-top: 0;
 }
-.header-nav ul{
+
+.header-nav ul {
   display: flex;
 }
-.header-nav ul li{
+
+.header-nav ul li {
   margin: 10px;
 }
-main{
+
+a {
+  color: #8ce48f;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #55cc44;
+}
+
+main {
   margin: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-ul{
+
+ul {
   list-style: none;
 }
-.characters-list{
+
+.characters-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   box-sizing: border-box;
 }
-.characters-item{
+
+.characters-item {
   color: white;
   display: flex;
   border-radius: 10px;
@@ -41,40 +64,50 @@ ul{
   box-sizing: border-box;
   background-color: #3a3a3a;
 }
-.characters-item h3{
+
+.characters-item h3 {
   color: #8ce48f;
   font-weight: bold;
 }
-.characters-item img{
+
+.characters-item img {
   height: 200px;
   border-radius: 10px 0px 0px 10px;
 }
-.character-information{
+
+.character-information {
   margin: 10px;
 }
-button{
+
+button {
   margin: 10px;
 }
-.pressed{
+
+.pressed {
   background-color: #8ce48f;
   color: black;
 }
-.status{
+
+.status {
   display: flex;
   align-items: center;
   text-align: center;
 }
-.status span{
+
+.status span {
   height: 1.2rem;
   margin-right: 3px;
 }
-.Alive{
+
+.Alive {
   color: #55cc44
 }
-.Dead{
+
+.Dead {
   color: #d63d2e;
 }
-.unknown{
+
+.unknown {
   color: #e0833b
 }
 
@@ -170,13 +203,13 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .episodes-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
 }
 
 .episode-information h3 {
@@ -193,6 +226,90 @@ input:focus {
 
 .episodes-loading,
 .episodes-error {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #ff6961;
+}
+
+
+
+
+.locations-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.locations-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.locations-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.locations-info {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.locations-pagination {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.locations-page {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.locations-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  list-style: none;
+}
+
+.locations-item {
+  background: linear-gradient(145deg, #3a3a3a, #2c2c2c);
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.locations-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.location-information h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #8ce48f;
+}
+
+.location-information p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.locations-loading,
+.locations-error {
   font-size: 1.1rem;
   margin-top: 20px;
   color: #ff6961;

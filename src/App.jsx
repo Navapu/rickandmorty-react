@@ -6,7 +6,7 @@ import './App.css'
 import { Navigation } from './components/Navigation'
 function App() {
   return (
-    <>
+    <div>
       <Navigation />
       <main>
         <Routes>
@@ -15,7 +15,7 @@ function App() {
           <Route path='/episodes' element={<Episodes />} />
         </Routes>
       </main>
-    </>
+    </div>
   )
 }
 
